@@ -3,7 +3,11 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import Todos from "./components/todos/Todos";
+/* import Todos from "./components/todos/Todos"; */
+import Main from "./components/mainPage/Main";
+import Inputs from "./components/Inputs";
+import Todos from "./components/todoReducer/Todos";
+import Styled from "./components/Styled";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -12,8 +16,11 @@ root.render(
         <App />
     </React.StrictMode> */
 
-    /*<App /> */
+    /* <App /> */
     <Todos />
+    /* <Main /> */
+    /* <Inputs /> */
+    /* <Styled /> */
 );
 
 // If you want to start measuring performance in your app, pass a function

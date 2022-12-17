@@ -2,7 +2,7 @@
 /* import Hello from "./components/Hello"; */
 /* import Counter from "./components/Counter"; */
 /* import Todoinput from "./components/Todoinput"; */
-import Todo from "./components/Todo";
+/* import Todo from "./components/Todo"; */
 import "./App.css";
 
 function App() {
@@ -72,7 +72,7 @@ function App() {
         </div>
     ); */
 
-    return <Todo />;
+    /* return <Todo />; */
 }
 
 export default App;

@@ -1,23 +1,22 @@
 import React from "react";
+import { useContext } from "react";
+import { RemoveContext } from "./Todos";
 
-function TodoList({ todos, onRemove, onToggle }) {
+function TodoList({ todos, onToggle }) {
     // todo 리스트 출력(삭제, 토글)
     return (
         <ul>
             {todos.map((todo) => (
-                <TodoItem
-                    key={todo.id}
-                    todo={todo}
-                    onRemove={onRemove}
-                    onToggle={onToggle}
-                />
+                <TodoItem key={todo.id} todo={todo} onToggle={onToggle} />
             ))}
         </ul>
     );
 }
 
-function TodoItem(todo, onRemove, onToggle) {
-    const [id, text, done] = todo;
+function TodoItem({ todo, onToggle }) {
+    const onRemove = useContext(RemoveContext);
+
+    const { id, text, done } = todo;
     const handleRemove = () => {
         if (window.confirm("정말 삭제하시겠습니까?")) onRemove(id);
     };
