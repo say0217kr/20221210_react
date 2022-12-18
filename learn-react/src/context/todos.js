@@ -45,7 +45,5 @@ export function useTodoState() {
 }
 
 export function useTodoDispatch() {
-    const context = useContext(StateDispatch);
-    if (!context) throw new Error("DispatchProvider 없음");
-    return context;
+    return useContext(StateDispatch);
 }

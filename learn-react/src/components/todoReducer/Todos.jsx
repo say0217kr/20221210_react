@@ -5,13 +5,13 @@ import { TodoProvider } from "../../context/todos";
 
 function Todos() {
     return (
-        <TodoProvider.Provider>
+        <TodoProvider>
             <div>
                 <h1 className="title">할일 목록</h1>
                 <TodoCreate />
                 <TodoList />
             </div>
-        </TodoProvider.Provider>
+        </TodoProvider>
     );
 }
 

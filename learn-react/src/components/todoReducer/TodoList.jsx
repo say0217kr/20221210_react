@@ -3,7 +3,6 @@ import { useTodoState } from "../../context/todos";
 
 function TodoList() {
     const todos = useTodoState();
-    console.log(todos);
 
     return (
         <ul>
