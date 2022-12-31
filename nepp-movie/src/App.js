@@ -1,12 +1,13 @@
-import { Routes, Route } from "react-router-dom";
+/* import { Routes, Route } from "react-router-dom";
 import Detail from "./components/Detail";
 import Header from "./components/Header";
 import Hello from "./components/Hello";
-import Main from "./components/Main";
+import Main from "./components/Main"; */
+import Movies from "./components/movies/Movies";
 
 function App() {
     return (
-        <>
+        /* <>
             <Header />
             <Routes>
                 <Route path="/*" element={<Main />}>
@@ -16,7 +17,8 @@ function App() {
                 <Route path="hello" element={<Hello />} />
                 <Route path="hello/:userId" element={<Detail />} />
             </Routes>
-        </>
+        </> */
+        <Movies />
     );
 }
 

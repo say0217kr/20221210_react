@@ -1,0 +1,29 @@
+{
+  "todos": [
+    {
+      "id": 1,
+      "text": "json-server 설치하기",
+      "done": true
+    },
+    {
+      "text": "axios 설치하기",
+      "done": false,
+      "id": 2
+    },
+    {
+      "text": "등록테스트",
+      "done": false,
+      "id": 3
+    },
+    {
+      "text": "등록될까요?",
+      "done": false,
+      "id": 4
+    },
+    {
+      "text": "바로바로등록",
+      "done": false,
+      "id": 5
+    }
+  ]
+}
