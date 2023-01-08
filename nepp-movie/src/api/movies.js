@@ -1,7 +1,7 @@
 import axios from "axios";
 
 axios.defaults.headers = {
-    Authorization: `Bearer ${process.env.REACT_APP_TMDB_TOKEN}`,
+    Authorization: `Bearer ${process.env.REACT_APP_TMDB_TOKEN_V4}`,
 };
 
 axios.defaults.baseURL = "https://api.themoviedb.org/3";
