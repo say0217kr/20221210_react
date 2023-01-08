@@ -3,8 +3,9 @@ import { useInputs } from "../../hook/useInputs";
 import AdminForm from "../admin/AdminForm";
 import { Input } from "../common/input";
 import { Button } from "../common/button";
-import { signIn } from "../../api/admin";
+import { getCurrentUser, signIn } from "../../api/admin";
 import { useNavigate } from "react-router-dom";
+import { useUserIdDispatch } from "../../data/auth";
 
 function SignIn() {
     const [inputs, handleInputs] = useInputs({
@@ -14,13 +15,16 @@ function SignIn() {
 
     const navigate = useNavigate();
 
-    const onSubmit = (e) => {
-        e.preventDefault();
+    const dispatch = useUserIdDispatch();
 
-        signIn(inputs).then((res) => {
-            window.localStorage.setItem("access-token", res.data.data.token);
-            navigate("/");
-        });
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        await signIn(inputs);
+
+        const user = await getCurrentUser();
+        dispatch(user.id);
+
+        navigate("/");
     };
 
     const signUp = (e) => {

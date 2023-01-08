@@ -19,10 +19,7 @@ function Profile() {
     };
 
     useEffect(() => {
-        getCurrentUser().then((res) => {
-            console.log(res);
-            setUser(res.data.data);
-        });
+        getCurrentUser().then((user) => setUser(user));
     }, []);
     return (
         <Container>

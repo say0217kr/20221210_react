@@ -7,7 +7,6 @@ function Main() {
     const navigate = useNavigate();
     useEffect(() => {
         const token = localStorage.getItem("access-token");
-        console.log(token);
         if (!token) {
             navigate("/signIn");
         }
@@ -32,6 +31,7 @@ const Container = styled.div`
 const OutletWrapper = styled.div`
     display: flex;
     flex: 1;
+    overflow: auto;
 `;
 
 export default Main;

@@ -7,7 +7,7 @@ function navBar() {
     return (
         <Container>
             <NavItem>
-                <StyledLink to="home">
+                <StyledLink to="/">
                     <MdHome size={24} />
                 </StyledLink>
             </NavItem>
