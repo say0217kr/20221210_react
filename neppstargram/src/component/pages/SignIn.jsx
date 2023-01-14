@@ -19,12 +19,16 @@ function SignIn() {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        await signIn(inputs);
+        try {
+            await signIn(inputs);
 
-        const user = await getCurrentUser();
-        dispatch(user.id);
+            const user = await getCurrentUser();
+            dispatch(user.id);
 
-        navigate("/");
+            navigate("/");
+        } catch (e) {
+            alert(e.response.data.message);
+        }
     };
 
     const signUp = (e) => {

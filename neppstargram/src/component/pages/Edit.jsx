@@ -3,12 +3,15 @@ import { RxPlus } from "react-icons/rx";
 import { useEffect, useState } from "react";
 import { Button } from "../common/button";
 import { convertUrl, getPostById, postPost } from "../../api/admin";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Edit() {
     const { postId } = useParams();
-    console.log(postId);
+
     const [post, setPost] = useState(null);
+
+    const navigate = useNavigate();
+
     const [inputs, setInputs] = useState({
         content: "",
         images: [],
@@ -45,14 +48,25 @@ function Edit() {
         });
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         const form = new FormData();
 
         form.append("content", inputs.content);
         inputs.images.forEach((image) => {
             form.append("images", image);
         });
-        postPost(form).then((res) => console.log(res));
+
+        for (let pair of form.entries()) {
+            console.log(pair[0], pair[1]);
+        }
+
+        try {
+            const post = await postPost(form);
+
+            navigate("/post/" + post.id);
+        } catch (e) {
+            alert(e.response.data.message);
+        }
     };
 
     useEffect(() => {

@@ -1,3 +1,4 @@
+import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { signUp } from "../../api/admin";
@@ -19,17 +20,36 @@ function SignUp() {
 
     const navigate = useNavigate();
 
+    const signUpMutate = useMutation(signUp, {
+        onMutate: (form) => {
+            console.log(form);
+        },
+        onSuccess: () => {
+            alert("회원가입에 성공했습니다.");
+            navigate("/signIn");
+        },
+        onError: (err) => {
+            alert(err.response.data.message);
+        },
+    });
+
     const onSubmit = (e) => {
         e.preventDefault();
 
         if (!active) return;
 
-        signUp(inputs).then((res) => {
-            console.log(res);
-            if (!res) return;
-            console.log("가입성공");
-            navigate("/signIn");
-        });
+        // signUp(inputs)
+        //     .then((res) => {
+        //         console.log(res);
+        //         if (!res) return;
+        //         alert("회원가입에 성공했습니다.");
+        //         navigate("/signIn");
+        //     })
+        //     .catch((e) => {
+        //         alert(e.response.data.message);
+        //     });
+
+        signUpMutate.mutate({ name, email, password });
     };
     return (
         <AdminForm title="회원가입" onSubmit={onSubmit}>

@@ -7,20 +7,22 @@ import Home from "./component/pages/Home";
 import Search from "./component/pages/Search";
 import Edit from "./component/pages/Edit";
 import Profile from "./component/pages/Profile";
+import User from "./component/pages/User";
 
 function App() {
     return (
         <Container>
             <Wrapper>
                 <Routes>
-                    <Route path="/" element={<Main />}>
+                    <Route path="/*" element={<Main />}>
                         <Route path="" element={<Home />} />
                         <Route path="search" element={<Search />} />
-                        <Route path="edit" element={<Edit />}>
+                        <Route path="edit">
                             <Route path="" element={<Edit />} />
                             <Route path=":postId" element={<Edit />} />
                         </Route>
                         <Route path="profile" element={<Profile />} />
+                        <Route path="users/:id" element={<User />} />
                     </Route>
                     <Route path="signIn" element={<SignIn />} />
                     <Route path="signUp" element={<SignUp />} />

@@ -12,7 +12,7 @@ function Post({ post }) {
     const userId = useUserId();
     return (
         <Container>
-            <UserInfo author={author} />
+            <UserInfo user={author} />
             <PostImageBox img_list={img_list}></PostImageBox>
             <div
                 style={{

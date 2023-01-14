@@ -11,15 +11,11 @@ if (token) {
 }
 
 export const signUp = async (form) => {
-    try {
-        const result = await axios.post("users", {
-            ...form,
-        });
+    const result = await axios.post("users", {
+        ...form,
+    });
 
-        return result;
-    } catch (e) {
-        console.log(e);
-    }
+    return result;
 };
 
 export const signIn = async (form) => {
@@ -27,7 +23,9 @@ export const signIn = async (form) => {
         ...form,
     });
     const token = result.data.data.token;
+
     window.localStorage.setItem("access-token", token);
+
     axios.defaults.headers["Authorization"] = `Bearer ${token}`;
     return true;
 };
@@ -41,8 +39,9 @@ export const patchProfile = (form) => {
     return axios.patch("users/profile", form);
 };
 
-export const postPost = (form) => {
-    return axios.post("posts", form);
+export const postPost = async (form) => {
+    const { data } = await axios.post("posts", form);
+    return data.data;
 };
 
 export const getPosts = async (page = 1) => {
@@ -85,4 +84,24 @@ export const convertUrl = async (url) => {
     const metaData = { type: `image/${ext}` };
 
     return new File([data], fileName, metaData);
+};
+
+export const searchUser = async (name) => {
+    const { data } = await axios.get(`users/search`, {
+        params: {
+            name,
+        },
+    });
+    return data.data;
+};
+
+export const getUserById = async (id) => {
+    const { data } = await axios.get("/users/" + id);
+    return data.data;
+};
+
+export const getUserPostById = async (author) => {
+    const { data } = await axios.get("posts/author/" + author);
+    console.log(data.data);
+    return data.data;
 };
