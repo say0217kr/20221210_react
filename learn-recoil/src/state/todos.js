@@ -19,7 +19,6 @@ export const unDoneCountState = selector({
 export const doneCountState = selector({
     key: "doneCountState",
     get: ({ get }) => get(todosState).length,
-    },
 });
 
 export const filterState = atom({
